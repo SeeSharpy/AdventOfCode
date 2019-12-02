@@ -14,22 +14,21 @@ namespace AdventOfCode
                 .AddSingleton<IDayOneService, DayOneService>()
                 .BuildServiceProvider();
 
-            Console.WriteLine("Loading Day One Answer");
-            var dayOneService = serviceProvider.GetService<IDayOneService>();
-            var answer = new List<int>();
+            DayOne(serviceProvider);
 
-            var numbers =
+            Console.ReadLine();
+        }
+
+        static void DayOne(ServiceProvider serviceProvider)
+        {
+            var dayOneService = serviceProvider.GetService<IDayOneService>();
+            var dayOneInput =
                 System.IO.File
                     .ReadAllLines($"{Environment.CurrentDirectory}/DayOne/DayOneInput.txt")
                     .Select(l => Convert.ToInt32(l))
                     .ToArray();
 
-            foreach (var mass in numbers)
-            {
-                answer.Add(dayOneService.CalculateFuel(0, mass));
-            }
-
-            Console.WriteLine($"Answer for day one is: {answer.Sum() } ");
+            Console.WriteLine($"Answer for day one is: {dayOneService.GetTotalFuel(dayOneInput)} ");
         }
     }
 }

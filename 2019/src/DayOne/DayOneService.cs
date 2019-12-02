@@ -1,12 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace AdventOfCode.DayOne
 {
     public class DayOneService : IDayOneService
-    {        
-        public int CalculateFuel(int totalMass, int mass)
+    {
+
+        public int GetTotalFuel(IEnumerable<int> masses)
+        {
+            var answer = 0;
+
+            foreach (var mass in masses)
+            {
+                answer += CalculateFuel(0, mass);
+            }
+
+            return answer;
+        }
+
+        int CalculateFuel(int totalMass, int mass)
         {
             var sum = totalMass;
 
@@ -21,5 +35,7 @@ namespace AdventOfCode.DayOne
 
             return sum;
         }
+
+
     }
 }

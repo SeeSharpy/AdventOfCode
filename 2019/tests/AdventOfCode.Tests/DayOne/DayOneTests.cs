@@ -16,12 +16,12 @@ namespace AdventOfCode.Tests.DayOne
             serviceUnderTest = new DayOneService();
         }
         [Theory]
-        [InlineData(14, 2)]
-        [InlineData(1969, 966)]
-        [InlineData(100756, 50346)]
-        public void Fuel_Is_Calculated_Correctly(int mass, int expected)
+        [InlineData(new[] { 14, 1969, 100756 }, 51314)]
+
+        public void Fuel_Is_Calculated_Correctly(IEnumerable<int> mass, int expected)
         {
-            var result = serviceUnderTest.CalculateFuel(0, mass);
+            
+            var result = serviceUnderTest.GetTotalFuel(mass);
 
             result.Should().Be(expected);
         }

@@ -6,6 +6,6 @@ namespace AdventOfCode.DayOne
 {
     public interface IDayOneService
     {
-        public int CalculateFuel(int totalMass, int mass);
+        public int GetTotalFuel(IEnumerable<int> masses);
     }
 }
